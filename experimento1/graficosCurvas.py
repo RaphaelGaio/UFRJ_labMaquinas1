@@ -1,5 +1,9 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import os
+
+# Certifica-se de que a pasta existe (opcional, evita erro no savefig)
+os.makedirs('experimento1/curvas', exist_ok=True)
 
 # Extracao de Dados
 # Ponto 1 (Operacao 1)
@@ -35,8 +39,23 @@ Torque2 = Pin2 / omega2
 # GRAFICO 1: CONJUGADO VS VELOCIDADE
 # ==========================================
 plt.figure(figsize=(8, 6))
-plt.plot(Torque1, n1, marker='o', label='Ponto de Operação 1', color='b', linewidth=2)
-plt.plot(Torque2, n2, marker='s', label='Ponto de Operação 2', color='r', linewidth=2)
+
+# Plotagem dos dados (linha tracejada fina, pontos redondos menores)
+plt.plot(Torque1, n1, marker='o', markersize=4, linestyle='--', color='b', linewidth=1, alpha=0.6, label='Dados P1')
+plt.plot(Torque2, n2, marker='o', markersize=4, linestyle='--', color='r', linewidth=1, alpha=0.6, label='Dados P2')
+
+# Curvas de Tendência (Polinômio de grau 2)
+# Ponto 1
+z1 = np.polyfit(Torque1, n1, 2)
+p1 = np.poly1d(z1)
+t1_linha = np.linspace(min(Torque1), max(Torque1), 100)
+plt.plot(t1_linha, p1(t1_linha), linestyle='-', color='b', linewidth=2, label='Tendência P1')
+
+# Ponto 2
+z2 = np.polyfit(Torque2, n2, 2)
+p2 = np.poly1d(z2)
+t2_linha = np.linspace(min(Torque2), max(Torque2), 100)
+plt.plot(t2_linha, p2(t2_linha), linestyle='-', color='r', linewidth=2, label='Tendência P2')
 
 plt.xlabel('Conjugado (N.m)', fontsize=12, fontweight='bold')
 plt.ylabel('Velocidade (rpm)', fontsize=12, fontweight='bold')
@@ -44,7 +63,7 @@ plt.grid(True, linestyle='--', alpha=0.7)
 plt.legend()
 plt.tight_layout()
 
-# Mostrar o grafico 1 na tela
+# Salvar o grafico 1
 plt.savefig('experimento1/curvas/curvaConjugadoVelocidade.png')
 
 
@@ -52,8 +71,23 @@ plt.savefig('experimento1/curvas/curvaConjugadoVelocidade.png')
 # GRAFICO 2: EFICIENCIA VS VELOCIDADE
 # ==========================================
 plt.figure(figsize=(8, 6))
-plt.plot(n1, Eficiencia1, marker='o', label='Ponto de Operação 1', color='b', linewidth=2)
-plt.plot(n2, Eficiencia2, marker='s', label='Ponto de Operação 2', color='r', linewidth=2)
+
+# Plotagem dos dados (linha tracejada fina, pontos redondos menores)
+plt.plot(n1, Eficiencia1, marker='o', markersize=4, linestyle='--', color='b', linewidth=1, alpha=0.6, label='Dados P1')
+plt.plot(n2, Eficiencia2, marker='o', markersize=4, linestyle='--', color='r', linewidth=1, alpha=0.6, label='Dados P2')
+
+# Curvas de Tendência (Polinômio de grau 2)
+# Ponto 1
+z3 = np.polyfit(n1, Eficiencia1, 2)
+p3 = np.poly1d(z3)
+n1_linha = np.linspace(min(n1), max(n1), 100)
+plt.plot(n1_linha, p3(n1_linha), linestyle='-', color='b', linewidth=2, label='Tendência P1')
+
+# Ponto 2
+z4 = np.polyfit(n2, Eficiencia2, 2)
+p4 = np.poly1d(z4)
+n2_linha = np.linspace(min(n2), max(n2), 100)
+plt.plot(n2_linha, p4(n2_linha), linestyle='-', color='r', linewidth=2, label='Tendência P2')
 
 plt.xlabel('Velocidade (rpm)', fontsize=12, fontweight='bold')
 plt.ylabel('Eficiência (%)', fontsize=12, fontweight='bold')
@@ -61,5 +95,5 @@ plt.grid(True, linestyle='--', alpha=0.7)
 plt.legend()
 plt.tight_layout()
 
-# Mostrar o grafico 2 na tela
+# Salvar o grafico 2
 plt.savefig('experimento1/curvas/curvaEficienciaVelocidade.png')
