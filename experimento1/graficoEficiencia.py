@@ -37,7 +37,6 @@ plt.plot(iL1, Eficiencia_ind_1, marker='o', label='Ponto de Operacao 1', color='
 plt.plot(iL2, Eficiencia_ind_2, marker='s', label='Ponto de Operacao 2', color='r', linewidth=2)
 
 # Formatacao do grafico
-plt.title('Eficiencia Individual (Motor/Gerador) vs. Corrente de Carga', fontsize=14, fontweight='bold')
 plt.xlabel('Corrente de Carga iL (A)', fontsize=12, fontweight='bold')
 plt.ylabel('Eficiencia Individual (%)', fontsize=12, fontweight='bold')
 plt.grid(True, linestyle='--', alpha=0.7)
