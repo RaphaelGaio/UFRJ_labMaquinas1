@@ -46,13 +46,13 @@ plt.plot(Torque2, n2, marker='o', markersize=4, linestyle='--', color='r', linew
 
 # Curvas de Tendência (Polinômio de grau 2)
 # Ponto 1
-z1 = np.polyfit(Torque1, n1, 2)
+z1 = np.polyfit(Torque1, n1, 3)
 p1 = np.poly1d(z1)
 t1_linha = np.linspace(min(Torque1), max(Torque1), 100)
 plt.plot(t1_linha, p1(t1_linha), linestyle='-', color='b', linewidth=2, label='Tendência P1')
 
 # Ponto 2
-z2 = np.polyfit(Torque2, n2, 2)
+z2 = np.polyfit(Torque2, n2, 3)
 p2 = np.poly1d(z2)
 t2_linha = np.linspace(min(Torque2), max(Torque2), 100)
 plt.plot(t2_linha, p2(t2_linha), linestyle='-', color='r', linewidth=2, label='Tendência P2')
@@ -78,13 +78,13 @@ plt.plot(n2, Eficiencia2, marker='o', markersize=4, linestyle='--', color='r', l
 
 # Curvas de Tendência (Polinômio de grau 2)
 # Ponto 1
-z3 = np.polyfit(n1, Eficiencia1, 2)
+z3 = np.polyfit(n1, Eficiencia1, 3)
 p3 = np.poly1d(z3)
 n1_linha = np.linspace(min(n1), max(n1), 100)
 plt.plot(n1_linha, p3(n1_linha), linestyle='-', color='b', linewidth=2, label='Tendência P1')
 
 # Ponto 2
-z4 = np.polyfit(n2, Eficiencia2, 2)
+z4 = np.polyfit(n2, Eficiencia2, 3)
 p4 = np.poly1d(z4)
 n2_linha = np.linspace(min(n2), max(n2), 100)
 plt.plot(n2_linha, p4(n2_linha), linestyle='-', color='r', linewidth=2, label='Tendência P2')
