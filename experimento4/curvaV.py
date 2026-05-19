@@ -69,7 +69,7 @@ mod_alta, x_alta_s, y_alta_s, fpx_alta, fpy_alta = ajustar_hiperbole(if_alta, ia
 # 4. Funções Auxiliares de Plotagem
 # ----------------------------------------------------
 def configurar_grafico(titulo):
-    plt.title(titulo, fontsize=14, fontweight='bold')
+    # plt.title(titulo, fontsize=14, fontweight='bold')
     plt.xlabel('Corrente de Campo - If (A)', fontsize=12)
     plt.ylabel('Corrente de Armadura - Ia (A)', fontsize=12)
     plt.grid(True, linestyle='--', alpha=0.6)
@@ -85,7 +85,7 @@ def plotar_curva_individual(x_raw, y_raw, x_smooth, y_smooth, fpx, fpy, label, c
     plt.plot(fpx, fpy, marker='D', markersize=8, color='red', linestyle='None', label=f'FP Unitário ({fpx:.2f}, {fpy:.2f})')
     
     configurar_grafico(f'Curva V - {label}')
-    plt.legend(loc='best')
+    plt.legend(loc='lower right')
     plt.tight_layout()
     plt.savefig(f'{output_dir}/{filename}', bbox_inches='tight')
     plt.close()
@@ -130,7 +130,7 @@ for x_s, y_s, x_r, y_r, cor, lbl, m in plot_args:
 plotar_curva_fp_suave(fp_1_x, fp_1_y, 'FP = 1.0', 'red', 'D', '--')
 
 configurar_grafico('Curvas V da Máquina Síncrona')
-plt.legend(loc='upper right', fontsize=10)
+plt.legend(loc='lower right', fontsize=10)
 plt.tight_layout()
 plt.savefig(f'{output_dir}/curvas_todas.png', bbox_inches='tight')
 plt.close()
@@ -175,7 +175,7 @@ for fp in alvos_fp:
                               f'FP = {lbl} Capacitivo', cor, marcador, ':')
 
 configurar_grafico('Curvas V e Curvas de Fator de Potência Constante')
-plt.legend(loc='upper center', bbox_to_anchor=(0.5, 0.98), fontsize=10, ncol=3) 
+plt.legend(loc='lower right', fontsize=10, ncol=3) 
 plt.tight_layout()
 plt.savefig(f'{output_dir}/curvas_todas_fp_constante.png', bbox_inches='tight')
 plt.show()
