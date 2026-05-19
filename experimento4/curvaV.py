@@ -179,3 +179,34 @@ plt.legend(loc='lower right', fontsize=10, ncol=3)
 plt.tight_layout()
 plt.savefig(f'{output_dir}/curvas_todas_fp_constante.png', bbox_inches='tight')
 plt.show()
+
+# ----------------------------------------------------
+# 6. Exibição da Tabela de Pontos Encontrados
+# ----------------------------------------------------
+print("\n" + "="*80)
+print(f"{'TABELA RESUMO: PONTOS DE INTERSECÇÃO (If, Ia)':^80}")
+print("="*80)
+print(f"{'Carga':<12} | {'FP = 1.0 (Mínimo)':<20} | {'Lado Indutivo (Esquerda)':<20} | {'Lado Capacitivo (Direita)'}")
+print("-" * 80)
+
+cargas = ['Leve', 'Média', 'Alta']
+
+# 1. Tabela para FP = 0.8
+print("\n>>> FATOR DE POTÊNCIA = 0.8")
+for i, carga in enumerate(cargas):
+    fp1_str = f"({fp_1_x[i]:.2f}, {fp_1_y[i]:.2f})"
+    ind_str = f"({pontos_fp[0.8]['ind_x'][i]:.2f}, {pontos_fp[0.8]['ind_y'][i]:.2f})"
+    cap_str = f"({pontos_fp[0.8]['cap_x'][i]:.2f}, {pontos_fp[0.8]['cap_y'][i]:.2f})"
+    
+    print(f"{carga:<12} | {fp1_str:<20} | {ind_str:<20} | {cap_str}")
+
+# 2. Tabela para FP = 0.6
+print("\n>>> FATOR DE POTÊNCIA = 0.6")
+for i, carga in enumerate(cargas):
+    fp1_str = f"({fp_1_x[i]:.2f}, {fp_1_y[i]:.2f})"
+    ind_str = f"({pontos_fp[0.6]['ind_x'][i]:.2f}, {pontos_fp[0.6]['ind_y'][i]:.2f})"
+    cap_str = f"({pontos_fp[0.6]['cap_x'][i]:.2f}, {pontos_fp[0.6]['cap_y'][i]:.2f})"
+    
+    print(f"{carga:<12} | {fp1_str:<20} | {ind_str:<20} | {cap_str}")
+
+print("="*80 + "\n")
